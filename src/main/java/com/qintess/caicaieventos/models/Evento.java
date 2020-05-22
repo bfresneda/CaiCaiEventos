@@ -17,8 +17,6 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Evento{
 
@@ -26,7 +24,7 @@ public class Evento{
 	private int id;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonIgnore
+//	@JsonIgnore
 	private CasaDeShow casaDeShow;
 	
 	@OneToMany(cascade = CascadeType.ALL
@@ -47,7 +45,6 @@ public class Evento{
 	
 	private int quantidadeIngressosDisponiveis;
 	
-	
 	@Column(columnDefinition="bytea")
 	private byte[] imagemEvento;
 	
@@ -57,19 +54,11 @@ public class Evento{
 	public Evento() {
 	}
 	
-	public Evento(String nome, int quantidadeIngressosDisponiveis) {
+	public Evento(String nome, int quantidadeIngressos) {
 		super();
 		this.nome = nome;
-		this.quantidadeIngressosDisponiveis = quantidadeIngressosDisponiveis;
+		this.quantidadeIngressos = quantidadeIngressos;
 	}
-
-
-//	@Override
-//	public String toString() {
-//		return "Evento [id=" + id + ", casaDeShow=" + casaDeShow + ", listaIngressos=" + listaIngressos + ", nome="
-//				+ nome + ", descricao=" + descricao + ", data=" + data + ", quantidadeIngressos=" + quantidadeIngressos
-//				+ ", preco=" + preco + ", quantidadeIngressosDisponiveis=" + quantidadeIngressosDisponiveis + "]";
-//	}
 
 	public int getId() {
 		return id;
@@ -124,7 +113,7 @@ public class Evento{
 	}
 
 	public void setQuantidadeIngressosDisponiveis(int quantidadeIngressosDisponiveis) {
-		this.quantidadeIngressosDisponiveis = quantidadeIngressosDisponiveis;
+		this.quantidadeIngressosDisponiveis = quantidadeIngressos;
 	}
 
 	public List<ComprarIngresso> getListaIngressos() {

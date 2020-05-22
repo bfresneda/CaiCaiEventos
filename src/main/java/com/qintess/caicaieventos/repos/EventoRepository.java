@@ -12,4 +12,6 @@ public interface EventoRepository extends JpaRepository<Evento, Integer>{ // ele
 	public Evento findById(int id);	
 	
 	public void deleteById(int id);
+	
+	
 }

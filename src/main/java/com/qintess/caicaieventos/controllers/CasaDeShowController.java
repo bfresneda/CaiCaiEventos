@@ -56,7 +56,13 @@ public class CasaDeShowController {
 		return casaDeShowService.buscarPorId(id)
 				.map(record -> {
 					record.setNome(casaDeShow.getNome());
+					record.setLogradouro(casaDeShow.getLogradouro());
+					record.setNumero(casaDeShow.getNumero());
+					record.setBairro(casaDeShow.getBairro());
+					record.setCidade(casaDeShow.getCidade());
+					record.setEstado(casaDeShow.getEstado());
 					record.setCapacidadeTotal(casaDeShow.getCapacidadeTotal());
+					record.setListaEventos(casaDeShow.getListaEventos());
 					CasaDeShow update = casaDeShowService.salvar(record);
 					return ResponseEntity.ok().body(update);
 				}).orElse(ResponseEntity.notFound().build());

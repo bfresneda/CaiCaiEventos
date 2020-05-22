@@ -36,8 +36,10 @@ public class EventoController {
 	//criar um novo registro
 	@PostMapping("/evento")
 	public void criarEvento(@RequestBody Evento evento) {
-		evento.setQuantidadeIngressosDisponiveis(evento.getQuantidadeIngressos());
+		if(evento.getQuantidadeIngressos() <= evento.getCasaDeShow().getCapacidadeTotal()) {
 		eventoService.salvar(evento);
+		}
+		
 	}
 	
 	
@@ -62,8 +64,12 @@ public class EventoController {
 		return eventoService.buscarPorId(id)
 				.map(record -> {
 					record.setNome(evento.getNome());
-					record.setQuantidadeIngressos(evento.getQuantidadeIngressos());
 					record.setDescricao(evento.getDescricao());
+					record.setData(evento.getData());
+					record.setCasaDeShow(evento.getCasaDeShow());
+					record.setQuantidadeIngressos(evento.getQuantidadeIngressos());
+					record.setPreco(evento.getPreco());
+					record.setCasaDeShow(evento.getCasaDeShow());
 					Evento update = eventoService.salvar(record);
 					return ResponseEntity.ok().body(update);
 				}).orElse(ResponseEntity.notFound().build());

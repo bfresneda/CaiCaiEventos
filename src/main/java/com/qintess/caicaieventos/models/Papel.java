@@ -29,10 +29,6 @@ public class Papel {
 	@Column
 	private String atribuicao;
 	
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JsonIgnore
-//	private Cliente cliente;
-
 	@OneToMany(cascade = CascadeType.ALL
 			  ,mappedBy = "papel"
 			  ,orphanRemoval = true)
@@ -40,6 +36,16 @@ public class Papel {
 	@JsonIgnore
 	private List<Cliente> clientes = new ArrayList<>();
 	
+	
+	public Papel() {
+		
+	}
+	
+	public Papel(Integer nivel, String atribuicao) {
+		this.nivel = nivel;
+		this.atribuicao = atribuicao;
+	}
+
 	public int getId() {
 		return id;
 	}

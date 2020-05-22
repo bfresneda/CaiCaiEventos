@@ -30,12 +30,6 @@ public class ComprarIngresso {
 	public ComprarIngresso() {
 	}
 	
-//	@Override
-//	public String toString() {
-//		return "CompraIngresso [cliente=" + cliente + ", evento=" + evento + ", id=" + id + ", preco=" + preco
-//				+ ", quantidade=" + quantidade + "]";
-//	}
-
 	public int getId() {
 		return id;
 	}

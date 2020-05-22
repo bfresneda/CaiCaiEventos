@@ -58,9 +58,9 @@ public class ClienteController {
 		return clienteService.buscarPorId(id)
 				.map(record -> {
 					record.setNome(cliente.getNome());
-					record.setDtNascimento(cliente.getDtNascimento());
 					record.setEmail(cliente.getEmail());
 					record.setSenha(cliente.getSenha());
+					record.setDtNascimento(cliente.getDtNascimento());
 					Cliente update = clienteService.salvar(record);
 					return ResponseEntity.ok().body(update);
 				}).orElse(ResponseEntity.notFound().build());

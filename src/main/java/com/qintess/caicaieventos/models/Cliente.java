@@ -44,13 +44,13 @@ public class Cliente{
 	private Papel papel;
 	
 	
-//	@OneToMany(cascade = CascadeType.ALL
-//			  ,mappedBy = "cliente"
-//			  ,orphanRemoval = true)
-//	@LazyCollection(LazyCollectionOption.FALSE)
-//	private List<Papel> papeis = new ArrayList<>();
-
 	
+	public Cliente(String nome, String email, String senha) {
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+	}
+
 	public Cliente() {
 	}
 

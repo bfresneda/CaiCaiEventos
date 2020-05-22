@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class CasaDeShow {
 
@@ -49,10 +51,17 @@ public class CasaDeShow {
 			   ,orphanRemoval = true
 			   ,mappedBy = "casaDeShow")
 	@LazyCollection(LazyCollectionOption.FALSE)
+	@JsonIgnore
 	List<Evento> listaEventos = new ArrayList<>();
 
 	
 	
+	public CasaDeShow(String nome, String logradouro, int capacidadeTotal) {
+		this.nome = nome;
+		this.logradouro = logradouro;
+		this.capacidadeTotal = capacidadeTotal;
+	}
+
 	public CasaDeShow() {
 	}
 
