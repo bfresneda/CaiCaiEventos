@@ -63,13 +63,18 @@ public class EventoController {
 										    @RequestBody Evento evento) {
 		return eventoService.buscarPorId(id)
 				.map(record -> {
-					record.setNome(evento.getNome());
-					record.setDescricao(evento.getDescricao());
-					record.setData(evento.getData());
-					record.setCasaDeShow(evento.getCasaDeShow());
-					record.setQuantidadeIngressos(evento.getQuantidadeIngressos());
-					record.setPreco(evento.getPreco());
-					record.setCasaDeShow(evento.getCasaDeShow());
+					if(evento.getNome() != null) {
+					record.setNome(evento.getNome());}
+					if(evento.getDescricao() != null) {
+					record.setDescricao(evento.getDescricao());}
+					if(evento.getData() != null) {
+					record.setData(evento.getData());}
+					if(evento.getCasaDeShow() != null) {
+					record.setCasaDeShow(evento.getCasaDeShow());}
+					if(evento.getQuantidadeIngressos() != 0) {
+					record.setQuantidadeIngressos(evento.getQuantidadeIngressos());}
+					if(evento.getPreco() != 0.0) {
+					record.setPreco(evento.getPreco());}
 					Evento update = eventoService.salvar(record);
 					return ResponseEntity.ok().body(update);
 				}).orElse(ResponseEntity.notFound().build());

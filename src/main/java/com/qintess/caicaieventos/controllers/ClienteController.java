@@ -57,10 +57,14 @@ public class ClienteController {
 										    @RequestBody Cliente cliente) {
 		return clienteService.buscarPorId(id)
 				.map(record -> {
-					record.setNome(cliente.getNome());
-					record.setEmail(cliente.getEmail());
-					record.setSenha(cliente.getSenha());
-					record.setDtNascimento(cliente.getDtNascimento());
+					if(cliente.getNome() != null) {
+					record.setNome(cliente.getNome());}
+					if(cliente.getEmail() != null) {
+					record.setEmail(cliente.getEmail());}
+					if(cliente.getSenha() != null) {
+					record.setSenha(cliente.getSenha());}
+					if(cliente.getDtNascimento() != null) {
+					record.setDtNascimento(cliente.getDtNascimento());}
 					Cliente update = clienteService.salvar(record);
 					return ResponseEntity.ok().body(update);
 				}).orElse(ResponseEntity.notFound().build());

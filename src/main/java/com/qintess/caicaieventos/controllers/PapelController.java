@@ -42,8 +42,10 @@ public class PapelController {
 										   @RequestBody Papel papel){
 		return papelService.buscarPorId(id)
 				.map(record -> {
-					record.setNivel(papel.getNivel());
-					record.setAtribuicao(papel.getAtribuicao());
+					if(papel.getNivel() != null) {
+					record.setNivel(papel.getNivel());}
+					if(papel.getAtribuicao() != null) {
+					record.setAtribuicao(papel.getAtribuicao());}
 					Papel update = papelService.salvar(record);
 					return ResponseEntity.ok().body(update);
 				}).orElse(ResponseEntity.notFound().build());

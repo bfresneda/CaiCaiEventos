@@ -55,14 +55,22 @@ public class CasaDeShowController {
 											   ,@RequestBody CasaDeShow casaDeShow){
 		return casaDeShowService.buscarPorId(id)
 				.map(record -> {
-					record.setNome(casaDeShow.getNome());
-					record.setLogradouro(casaDeShow.getLogradouro());
-					record.setNumero(casaDeShow.getNumero());
-					record.setBairro(casaDeShow.getBairro());
-					record.setCidade(casaDeShow.getCidade());
-					record.setEstado(casaDeShow.getEstado());
-					record.setCapacidadeTotal(casaDeShow.getCapacidadeTotal());
-					record.setListaEventos(casaDeShow.getListaEventos());
+					if(casaDeShow.getNome() != null) {
+					record.setNome(casaDeShow.getNome());}
+					if(casaDeShow.getLogradouro() != null) {
+					record.setLogradouro(casaDeShow.getLogradouro());}
+					if(casaDeShow.getNumero() != 0) {
+					record.setNumero(casaDeShow.getNumero());}
+					if(casaDeShow.getBairro() != null) {
+					record.setBairro(casaDeShow.getBairro());}
+					if(casaDeShow.getCidade() != null) {
+					record.setCidade(casaDeShow.getCidade());}
+					if(casaDeShow.getEstado() != null) {
+					record.setEstado(casaDeShow.getEstado());}
+					if(casaDeShow.getCapacidadeTotal() != 0) {
+					record.setCapacidadeTotal(casaDeShow.getCapacidadeTotal());}
+					if(casaDeShow.getListaEventos() != null) {
+					record.setListaEventos(casaDeShow.getListaEventos());}
 					CasaDeShow update = casaDeShowService.salvar(record);
 					return ResponseEntity.ok().body(update);
 				}).orElse(ResponseEntity.notFound().build());
