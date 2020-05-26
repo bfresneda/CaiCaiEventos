@@ -43,8 +43,8 @@ public class InputInicial implements CommandLineRunner{
 		casaDeShowRepository.save(new CasaDeShow("Baladinha top","rua da estrada perdida",123));
 		casaDeShowRepository.save(new CasaDeShow("Baladinha topezera","rua das marmota",35));
 		
-		eventoRepository.save(new Evento("Festa do caqui",253));
-		eventoRepository.save(new Evento("Festa das bolhas",75));
+		eventoRepository.save(new Evento("Festa do caqui",253,253));
+		eventoRepository.save(new Evento("Festa das bolhas",75,75));
 	
 	}
 			

@@ -16,20 +16,19 @@ public class ComprarIngresso {
 	private int id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Cliente cliente;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Evento evento;
-	
-	
-	private double preco;
 	
 	private int quantidade;
 
 	public ComprarIngresso() {
 	}
 	
+
 	public int getId() {
 		return id;
 	}
@@ -52,14 +51,6 @@ public class ComprarIngresso {
 
 	public void setEvento(Evento evento) {
 		this.evento = evento;
-	}
-
-	public double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
 	}
 
 	public int getQuantidade() {

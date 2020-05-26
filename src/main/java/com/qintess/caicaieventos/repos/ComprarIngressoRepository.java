@@ -8,6 +8,6 @@ public interface ComprarIngressoRepository extends JpaRepository<ComprarIngresso
 	
 	public ComprarIngresso findById(int id);
 	
-	public ComprarIngresso deleteById(int id);
+	public void deleteById(int id);
 	
 }

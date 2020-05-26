@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -36,8 +38,8 @@ public class Cliente{
 	@OneToMany(cascade = CascadeType.ALL
 				,mappedBy = "cliente"
 				,orphanRemoval = true
-				,fetch = FetchType.EAGER
 				)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<ComprarIngresso> listaIngressos;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -52,12 +54,6 @@ public class Cliente{
 	}
 
 	public Cliente() {
-	}
-
-	@Override
-	public String toString() {
-		return "Cliente [id=" + id + ", nome=" + nome + ", email=" + email + ", listaIngressos="
-				+ listaIngressos + "]";
 	}
 
 	public int getId() {

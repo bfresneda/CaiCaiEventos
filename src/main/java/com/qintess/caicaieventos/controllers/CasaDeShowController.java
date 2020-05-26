@@ -69,8 +69,6 @@ public class CasaDeShowController {
 					record.setEstado(casaDeShow.getEstado());}
 					if(casaDeShow.getCapacidadeTotal() != 0) {
 					record.setCapacidadeTotal(casaDeShow.getCapacidadeTotal());}
-					if(casaDeShow.getListaEventos() != null) {
-					record.setListaEventos(casaDeShow.getListaEventos());}
 					CasaDeShow update = casaDeShowService.salvar(record);
 					return ResponseEntity.ok().body(update);
 				}).orElse(ResponseEntity.notFound().build());

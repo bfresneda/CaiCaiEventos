@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.qintess.caicaieventos.models.CasaDeShow;
 import com.qintess.caicaieventos.models.Evento;
+import com.qintess.caicaieventos.services.CasaDeShowService;
 import com.qintess.caicaieventos.services.EventoService;
 
 
@@ -25,6 +27,8 @@ public class EventoController {
 	@Autowired
 	private EventoService eventoService;
 	
+	@Autowired
+	private CasaDeShowService casaDeShowService;
 
 	//buscar todos os registros 
 	@GetMapping("/evento")
@@ -36,10 +40,7 @@ public class EventoController {
 	//criar um novo registro
 	@PostMapping("/evento")
 	public void criarEvento(@RequestBody Evento evento) {
-		if(evento.getQuantidadeIngressos() <= evento.getCasaDeShow().getCapacidadeTotal()) {
 		eventoService.salvar(evento);
-		}
-		
 	}
 	
 	
@@ -69,8 +70,6 @@ public class EventoController {
 					record.setDescricao(evento.getDescricao());}
 					if(evento.getData() != null) {
 					record.setData(evento.getData());}
-					if(evento.getCasaDeShow() != null) {
-					record.setCasaDeShow(evento.getCasaDeShow());}
 					if(evento.getQuantidadeIngressos() != 0) {
 					record.setQuantidadeIngressos(evento.getQuantidadeIngressos());}
 					if(evento.getPreco() != 0.0) {

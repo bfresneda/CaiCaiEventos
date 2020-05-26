@@ -29,13 +29,12 @@ public class ComprarIngressoService {
 	}
 	
 	
-	public void deletarPorId(Integer id) {
-		comprarIngressoRepository.deleteById(id);
-	}
-	
 	public long ContarVendidos() {
 		return comprarIngressoRepository.count();
+	}
 
+	public void deletarPorId(Integer id) {
+		comprarIngressoRepository.deleteById(id);
 	}
 	
 }

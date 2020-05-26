@@ -54,10 +54,11 @@ public class Evento{
 	public Evento() {
 	}
 	
-	public Evento(String nome, int quantidadeIngressos) {
+	public Evento(String nome, int quantidadeIngressos, int quantidadeIngressosDisponiveis) {
 		super();
 		this.nome = nome;
 		this.quantidadeIngressos = quantidadeIngressos;
+		this.quantidadeIngressosDisponiveis = quantidadeIngressosDisponiveis;
 	}
 
 	public int getId() {
@@ -113,7 +114,7 @@ public class Evento{
 	}
 
 	public void setQuantidadeIngressosDisponiveis(int quantidadeIngressosDisponiveis) {
-		this.quantidadeIngressosDisponiveis = quantidadeIngressos;
+		this.quantidadeIngressosDisponiveis = quantidadeIngressosDisponiveis;
 	}
 
 	public List<ComprarIngresso> getListaIngressos() {

@@ -52,7 +52,7 @@ public class CasaDeShow {
 			   ,mappedBy = "casaDeShow")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JsonIgnore
-	List<Evento> listaEventos = new ArrayList<>();
+	private List<Evento> listaEventos = new ArrayList<>();
 
 	
 	
@@ -64,14 +64,6 @@ public class CasaDeShow {
 
 	public CasaDeShow() {
 	}
-
-//	@Override 
-//	
-//	public String toString() {
-//		return "CasaDeShow [id=" + id + ", nome=" + nome + ", logradouro=" + logradouro + ", numero=" + numero
-//				+ ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", capacidadeTotal="
-//				+ capacidadeTotal + ", imagemCasadeShow=" + Arrays.toString(imagemCasadeShow) + "]";
-//	}
 
 	public int getId() {
 		return id;
